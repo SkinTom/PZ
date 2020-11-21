@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <th:block th:fragment="navbar">
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-3 shadow">
+            <a class="navbar-brand col-lg-2 col-md-3 m-0 p-0 pl-2" href="#" style="font-family: Quando; font-size: 2rem;">ATHENA</a>
+            <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+                    data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <input class="form-control w-100" type="text" placeholder="Search" aria-label="Search">
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="#">Wyloguj się</a>
+                </li>
+            </ul>
+        </nav>
+    </th:block>
+</body>
+</html>
