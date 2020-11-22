@@ -8,3 +8,6 @@ INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES 
 INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Maciej Dębski, Anna Michalska","978-83-933855-2-2","polski",1,343,"Pomorskie Forum na Rzecz Wychodzenia z Bezdomności","Podręcznik streetworkera bezdomności");
 INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Judtih Herman","978-83-8143-140-8","polski",1,367,"Wydawnictwo Czarna Owca","Trauma. Od przemocy domowej do terroru politycznego");
 INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Krzysztof Gąsior, Mirosław Jamrożek","978-83-926435-5-5","polski",1,261,"Kaligraf","Zagrożona młodzież i rodzina w środowisku lokalnym");
+INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Antoni Kępiński","83-200-0895-6","polski",1,340,"Państwowy Zakład Wydawnictw Lekarskich","Psychopatologia nerwic");
+INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Elisabeth Kübler-Ross","8385594-68-X","polski",1,275,"Media Rodzina of Poznań","Rozmowy o śmierciu i umieraniu");
+INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Beata Maria Pawlik","978-83-7930-557-5","polski",1,240,"Difin","Bezdomność. Modele pracy socjalnej. Wsparcie Psychologiczne");
