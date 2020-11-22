@@ -1,0 +1,1 @@
+INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Yakov Fain, Anton Moiseev","978-83-283-5666-5","polski",2,551,"Helion","Angular - Programowanie z użyciem języka TypeScript");

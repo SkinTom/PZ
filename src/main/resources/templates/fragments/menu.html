@@ -9,7 +9,7 @@
 
     <th:block th:fragment="sidebar-menu(menuItem)">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse p-0 pt-3">
-            <div class="sidebar-sticky p-0 m-0">
+            <div class="p-0 m-0">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/finances}" th:classappend="${menuItem == 'finances'} ? 'active' ">
@@ -50,7 +50,6 @@
                         </a>
                     </li>
                 </ul>
-
             </div>
         </nav>
     </th:block>
