@@ -17,63 +17,8 @@
     <!-- navbar -->
     <th:block th:replace="fragments/navbar :: navbar"></th:block>
 
-    <!-- form for adding items (modal) -->
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form th:action="@{/items/add}" method="post" th:object="${item}">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="addItemModalLabel">Nowa pozycja</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-row my-2">
-                            <div class="col">
-                                <label for="title">Tytuł:</label>
-                                <input type="text" class="form-control" id="title" th:field="*{title}" name="title" placeholder="tytuł" />
-                            </div>
-                        </div>
-                        <div class="form-row my-2">
-                            <div class="col-md-6">
-                                <label for="title">Autor:</label>
-                                <input type="text" class="form-control" id="author" th:field="*{author}" name="author" placeholder="autor" />
-                            </div>
-                            <div class="col-md-6">
-                                <label for="title">Wydawnictwo:</label>
-                                <input type="text" class="form-control" id="publisher" th:field="*{publisher}" name="publisher" placeholder="wydawnictwo" />
-                            </div>
-                        </div>
-                        <div class="form-row my-2">
-                            <div class="col-md-6">
-                                <label for="title">Język:</label>
-                                <input type="text" class="form-control" id="language" th:field="*{language}" name="language" placeholder="język" />
-                            </div>
-                            <div class="col-md-6">
-                                <label for="title">Liczba stron:</label>
-                                <input type="number" class="form-control" id="page" th:field="*{page}" name="page" placeholder="liczba stron" />
-                            </div>
-                        </div>
-                        <div class="form-row my-2">
-                            <div class="col-md-6">
-                                <label for="title">Numer wydania:</label>
-                                <input type="number" class="form-control" id="number" th:field="*{number}" name="number" placeholder="numer wydania" />
-                            </div>
-                            <div class="col-md-6">
-                                <label for="title">Numer ISBN:</label>
-                                <input type="text" class="form-control" id="isbn" th:field="*{isbn}" name="isbn" placeholder="numer ISBN" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
-                        <button type="submit" class="btn btn-primary">Zapisz</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+    <!-- modal to add a new item -->
+    <th:block th:include="crud-items/addModal"></th:block>
 
     <div class="container-fluid">
         <div class="row">
@@ -104,8 +49,14 @@
                                 <td th:text="*{author}"></td>
                                 <td th:text="*{publisher}"></td>
                                 <td>
-                                    <a class="btn btn-info">Edytuj</a>
-                                    <a class="btn btn-danger" th:href="@{/items/delete/{id}(id=${i.id})}">Usuń</a>
+                                    <a data-toggle="modal" data-target="#editModal" th:attr="data-target='#editModal' + ${i.id}" class="btn btn-info">Edytuj</a>
+                                    <a data-toggle="modal" data-target="#deleteModal" th:attr="data-target='#deleteModal' + ${i.id}" class="btn btn-danger">Usuń</a>
+
+                                    <!-- modal to update item by id -->
+                                    <th:block th:include="crud-items/editModal"></th:block>
+
+                                    <!-- modal to delete item by id -->
+                                    <th:block th:include="crud-items/deleteModal"></th:block>
                                 </td>
                             </tr>
                         </tbody>

@@ -1,0 +1,19 @@
+<div class="modal fade in" th:id="deleteModal+${i.id}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Usuwanie pozycji</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Czy napewno chcesz usunąc pozcyję o tytule: <b>[[${i.title}]]</b></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger pull-left" data-dismiss="modal">Anuluj</button>
+                <a type="button" class="btn btn-danger" th:href="@{/items/delete/{id}(id=${i.id})}"><i class="fa fa-check"></i>&nbsp;Tak</a>
+            </div>
+        </div>
+    </div>
+</div>

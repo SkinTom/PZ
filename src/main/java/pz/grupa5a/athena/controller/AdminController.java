@@ -67,18 +67,6 @@ public class AdminController {
         return "redirect:/items";
     }
 
-    @GetMapping("/items/update/{id}")
-    public String updateItem(@PathVariable(value = "id") long id, Model model) {
-        Optional<Item> optionalItem = itemRepository.findById(id);
-        Item item = null;
-        if(optionalItem.isPresent()) {
-            item = optionalItem.get();
-        }
-
-        model.addAttribute("itemToEdit", item);
-        return "redirect:/items";
-    }
-
     @GetMapping("/items/delete/{id}")
     public String deleteItem(@PathVariable(value = "id") long id) {
         itemRepository.deleteById(id);
