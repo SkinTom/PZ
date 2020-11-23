@@ -112,16 +112,16 @@
                     </table>
                 </div>
 
-<!--                <nav aria-label="Page navigation example">-->
-<!--                    <ul class="pagination">-->
-<!--                      <li class="page-item"><a class="page-link" href="#">1</a></li>-->
-<!--                      <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--                      <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--                      <li class="page-item"><a class="page-link" href="#">4</a></li>-->
-<!--                      <li class="page-item"><a class="page-link" href="#">...</a></li>-->
-<!--                      <li class="page-item"><a class="page-link" href="#">Ostatnia</a></li>-->
-<!--                    </ul>-->
-<!--                  </nav>-->
+                <!-- pagination -->
+                <nav th:if="${totalPages > 1}" aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <th:block th:each="i: ${#numbers.sequence(0, totalPages - 1)}">
+                            <li class="page-item"><a th:classappend="${currentPage == i} ? active" th:href="@{'/items/page/' + ${i}}" class="page-link">[[${i}]]</a></li>
+                        </th:block>
+                        <li class="page-item"><a class="page-link" th:href="@{'/items/page/' + ${totalPages - 1}}">Ostatnia</a></li>
+                    </ul>
+                </nav>
+
             </main>
         </div>
     </div>

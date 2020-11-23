@@ -8,6 +8,11 @@ body {
     border-color: #aaa;
 }
 
+.pagination li a.active {
+    border-color: #222;
+    background-color: #333333;
+}
+
 .navbar {
     height: 10vh;
 }
