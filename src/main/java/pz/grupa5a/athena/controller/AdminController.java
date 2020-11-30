@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pz.grupa5a.athena.model.Item;
+import pz.grupa5a.athena.model.User;
 import pz.grupa5a.athena.repository.ItemRepository;
+import pz.grupa5a.athena.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,10 +21,12 @@ public class AdminController {
     private static final int PAGE_SIZE = 5;
 
     private ItemRepository itemRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public AdminController(ItemRepository itemRepository) {
+    public AdminController(ItemRepository itemRepository, UserRepository userRepository) {
         this.itemRepository = itemRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/finances")
@@ -35,7 +39,10 @@ public class AdminController {
     @GetMapping("/employees")
     public String employees(Model model) {
         String menuItem = "employees";
+        List<User> employees = userRepository.findByRoleName("ROLE_EMPLOYEE");
+
         model.addAttribute("menuItem", menuItem);
+        model.addAttribute("employees", employees);
         return "employees";
     }
 

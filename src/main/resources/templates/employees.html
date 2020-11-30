@@ -31,34 +31,21 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
-                                <th>Header</th>
+                                <th>Imię</th>
+                                <th>Nazwisko</th>
+                                <th>E-mail</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                            <tr th:each="employee, iStat: ${employees}" th:object="${employee}">
+                                <td th:text="${iStat.index + 1}"></td>
+                                <td th:text="*{firstName}"></td>
+                                <td th:text="*{lastName}"></td>
+                                <td th:text="*{email}"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">4</a></li>
-                      <li class="page-item"><a class="page-link" href="#">...</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Ostatnia</a></li>
-                    </ul>
-                  </nav>
             </main>
         </div>
     </div>

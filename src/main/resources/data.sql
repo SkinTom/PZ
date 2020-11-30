@@ -11,3 +11,19 @@ INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES 
 INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Antoni Kępiński","83-200-0895-6","polski",1,340,"Państwowy Zakład Wydawnictw Lekarskich","Psychopatologia nerwic");
 INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Elisabeth Kübler-Ross","8385594-68-X","polski",1,275,"Media Rodzina of Poznań","Rozmowy o śmierciu i umieraniu");
 INSERT INTO item(author, isbn, language, number, page, publisher, title) VALUES ("Beata Maria Pawlik","978-83-7930-557-5","polski",1,240,"Difin","Bezdomność. Modele pracy socjalnej. Wsparcie Psychologiczne");
+
+INSERT INTO user_role(role, description) VALUES ("ROLE_USER", "default role for user");
+INSERT INTO user_role(role, description) VALUES ("ROLE_EMPLOYEE", "employee role for library staff");
+INSERT INTO user_role(role, description) VALUES ("ROLE_ADMIN", "admin role for admin");
+
+INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Jan", "Nowak", "22-10-1994", "12312312312", "Kraków", "Mikołaja Kopernika", "12", "", "31-034", "Małopolskie", 4000.00, "jn@wp.pl", "user");
+INSERT INTO user_roles VALUES(1, 1);
+INSERT INTO user_roles VALUES(1, 2);
+INSERT INTO user_roles VALUES(1, 3);
+
+INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Adam", "Kowalski", "05-02-1980", "32312512312", "Warszawa", "Bajkowa", "3", "21", "04-861", "Mazowieckie", 6500.00, "ak@gmail.pl", "user");
+INSERT INTO user_roles VALUES(2, 1);
+INSERT INTO user_roles VALUES(2, 2);
+
+INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Wiktor", "Kot", "12-08-1991", "99912512312", "Warszawa", "Bajkowa", "7", "8", "04-861", "Mazowieckie", 0, "wk@wp.pl", "user");
+INSERT INTO user_roles VALUES(3, 1);
