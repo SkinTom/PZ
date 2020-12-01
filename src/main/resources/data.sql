@@ -27,3 +27,20 @@ INSERT INTO user_roles VALUES(2, 2);
 
 INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Wiktor", "Kot", "12-08-1991", "99912512312", "Warszawa", "Bajkowa", "7", "8", "04-861", "Mazowieckie", 0, "wk@wp.pl", "user");
 INSERT INTO user_roles VALUES(3, 1);
+
+INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Daniel", "Norman", "13-03-19946", "98750528661", "Wrocław", "Laskowa", "7", "", "17-372", "Dolnośląskie", 2499.00, "dn@wp.pl", "user");
+INSERT INTO user_roles VALUES(4, 1);
+INSERT INTO user_roles VALUES(4, 2);
+INSERT INTO user_roles VALUES(4, 3);
+
+INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Dariusz", "Kołolski", "01-01-2001", "12345678910", "Radom", "Radomska", "69", "8", "25-050", "Mazowieckie", 2890.50, "dk@gmail.pl", "user");
+INSERT INTO user_roles VALUES(5, 1);
+INSERT INTO user_roles VALUES(5, 2);
+
+INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Pietroy", "Sikorsky", "05-02-1969", "09876543210", "Zabłocie", "Zielona", "4", "20", "25-171", "Podlaskie", 3000.00, "ps@gmail.pl", "user");
+INSERT INTO user_roles VALUES(6, 1);
+INSERT INTO user_roles VALUES(6, 2);
+
+INSERT INTO user(first_name, last_name, date_of_birth, pesel, city, street, home_number, flat_number, postal_code, province, salary, email, password) VALUES ("Adam", "Obrębowicz", "30-12-2002", "22222222222", "Białystok", "Szkolna", "1", "7", "66-888", "Podkarpackie", 2600.00, "ao@gmail.pl", "user");
+INSERT INTO user_roles VALUES(7, 1);
+INSERT INTO user_roles VALUES(7, 2);
