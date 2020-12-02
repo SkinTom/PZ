@@ -34,6 +34,7 @@
                                 <th>Imię</th>
                                 <th>Nazwisko</th>
                                 <th>E-mail</th>
+                                <th>Operacje</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +43,12 @@
                                 <td th:text="*{firstName}"></td>
                                 <td th:text="*{lastName}"></td>
                                 <td th:text="*{email}"></td>
+                                <td>
+                                    <a data-toggle="modal" data-target="#manageRolesModal" th:attr="data-target='#manageRolesModal' + ${employee.id}" class="btn btn-info">Zarządzaj rolami</a>
+
+                                    <!-- role management modal  -->
+                                    <th:block th:include="fragments/manageRolesModal"></th:block>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

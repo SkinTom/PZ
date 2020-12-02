@@ -25,6 +25,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/items").permitAll()
                 .anyRequest().permitAll()
                 .and()
-                .formLogin();
+                .formLogin()
+                    .loginPage("/login").permitAll()
+                    .loginProcessingUrl("/process-login").permitAll()
+                    .usernameParameter("user")
+                    .passwordParameter("pass")
+                    .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/")
+                    .permitAll();
     }
 }

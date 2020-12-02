@@ -16,7 +16,7 @@ footer {
     background: #b57a44;
     height: 70px;
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0;
     text-align: center;
     color: white;
@@ -37,6 +37,7 @@ footer p {
 }
 .btn-group a:hover, .btn-group a.active {
     background: #A85305;
+    color: white;
 }
 .btn-group a:first-of-type {
     border-left: 3px solid black;
@@ -61,4 +62,15 @@ footer p {
     background: #b57a44 !important;
     margin-left: auto;
     margin-right: auto;
+}
+.register-link {
+    text-align: center;
+    margin: 20px 0 10px 0;
+}
+.table {
+    background: white;
+    border-radius: 10px;
+}
+.container {
+    margin-bottom: 120px;
 }

@@ -1,0 +1,32 @@
+<div class="modal fade in" th:id="manageRolesModal+${employee.id}">
+    <form th:action="@{/employees/manage-roles/{id}(id = ${employee.id})}" method="post">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Zarządzanie rolami</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="ROLE_USER" id="user-role" name="roles" th:checked="${#lists.contains(employee.roles, userRole)}">
+                        <label class="form-check-label" for="user-role">Użytkownik</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="ROLE_EMPLOYEE" id="employee-role" name="roles" th:checked="${#lists.contains(employee.roles, employeeRole)}">
+                        <label class="form-check-label" for="employee-role">Pracownik</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="ROLE_ADMIN" id="admin-role" name="roles" th:checked="${#lists.contains(employee.roles, adminRole)}">
+                        <label class="form-check-label" for="admin-role">Administrator</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+                    <button type="submit" class="btn btn-primary">Zapisz</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
