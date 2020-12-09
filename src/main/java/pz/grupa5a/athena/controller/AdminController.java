@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pz.grupa5a.athena.exception.UserNotFoundException;
 import pz.grupa5a.athena.model.Item;
 import pz.grupa5a.athena.model.User;
@@ -18,7 +19,6 @@ import pz.grupa5a.athena.repository.UserRoleRepository;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @Controller
@@ -37,7 +37,12 @@ public class AdminController {
         this.userRoleRepository = userRoleRepository;
     }
 
-    @GetMapping("/finances")
+    @GetMapping("/admin")
+    public String adminPanel() {
+        return "redirect:/admin/items";
+    }
+
+    @GetMapping("/admin/finances")
     public String finances(Model model) {
         List<User> employees = userRepository.findByRoleName("ROLE_EMPLOYEE");
         String menuItem = "finances";
@@ -47,15 +52,16 @@ public class AdminController {
         return "finances";
     }
 
-    @PostMapping("/finances/{id}")
-    public String salary(@PathVariable(value = "id") long id, @RequestParam(name = "salary") double salary) throws UserNotFoundException {
+    @PostMapping("/admin/finances/{id}")
+    public String salary(@PathVariable(value = "id") long id, @RequestParam(name = "salary") double salary, RedirectAttributes redirectAttr) throws UserNotFoundException {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found for this id: " + id));
         user.setSalary(salary);
         userRepository.save(user);
-        return "redirect:/finances";
+        redirectAttr.addFlashAttribute("message", "Wartość wynagrodzenia zaktualizowana z powodzeniem.");
+        return "redirect:/admin/finances";
     }
 
-    @GetMapping("/employees")
+    @GetMapping("/admin/employees")
     public String employees(Model model) {
         String menuItem = "employees";
         List<User> employees = userRepository.findByRoleName("ROLE_EMPLOYEE");
@@ -71,8 +77,8 @@ public class AdminController {
         return "employees";
     }
 
-    @PostMapping("employees/manage-roles/{id}")
-    public String manageRoles(@PathVariable(value = "id") long id, @RequestParam(name = "roles") List<String> roleNames) throws UserNotFoundException {
+    @PostMapping("/admin/employees/manage-roles/{id}")
+    public String manageRoles(@PathVariable(value = "id") long id, @RequestParam(name = "roles") List<String> roleNames, RedirectAttributes redirectAttr) throws UserNotFoundException {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found by id: " + id));
         Set<UserRole> roles = new HashSet<>();
 
@@ -82,15 +88,16 @@ public class AdminController {
         }
         user.setRoles(roles);
         userRepository.save(user);
-        return "redirect:/employees";
+        redirectAttr.addFlashAttribute("message", "Role zaktualizowano z powodzeniem.");
+        return "redirect:/admin/employees";
     }
 
-    @GetMapping("/items")
+    @GetMapping("/admin/items")
     public String items(Model model) {
         return findPaginatedItem(0, model);
     }
 
-    @GetMapping("/items/page/{page}")
+    @GetMapping("/admin/items/page/{page}")
     public String findPaginatedItem(@PathVariable(value = "page") int page, Model model) {
         String menuItem = "items";
 
@@ -107,15 +114,17 @@ public class AdminController {
         return "items";
     }
 
-    @PostMapping("/items/add")
-    public String createItem(@ModelAttribute Item item) {
+    @PostMapping("/admin/items/add")
+    public String createItem(@ModelAttribute Item item, RedirectAttributes redirectAttr) {
         itemRepository.save(item);
-        return "redirect:/items";
+        redirectAttr.addFlashAttribute("message", "Operacja zakończona powodzeniem.");
+        return "redirect:/admin/items";
     }
 
-    @GetMapping("/items/delete/{id}")
-    public String deleteItem(@PathVariable(value = "id") long id) {
+    @GetMapping("/admin/items/delete/{id}")
+    public String deleteItem(@PathVariable(value = "id") long id, RedirectAttributes redirectAttr) {
         itemRepository.deleteById(id);
-        return "redirect:/items";
+        redirectAttr.addFlashAttribute("message", "Pozycja usunięta!");
+        return "redirect:/admin/items";
     }
 }

@@ -20,20 +20,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/items").permitAll()
-                .anyRequest().permitAll()
+                    .antMatchers("/").permitAll()
+                    .antMatchers("/register").permitAll()
+                    .antMatchers("/catalog").permitAll()
+                    .antMatchers("/css/**").permitAll()
+                    .antMatchers("/img/**").permitAll()
+                    .antMatchers("/js/**").permitAll()
+                    .antMatchers("/account").authenticated()
+                    .antMatchers("/admin/items").access("hasAnyRole('ROLE_EMPLOYEE', 'ROLE_ADMIN')")
+                    .antMatchers("/admin/employees").access("hasRole('ROLE_ADMIN')")
+                    .antMatchers("/admin/finances").access("hasRole('ROLE_ADMIN')")
                 .and()
                 .formLogin()
                     .loginPage("/login").permitAll()
-                    .loginProcessingUrl("/process-login").permitAll()
-                    .usernameParameter("user")
-                    .passwordParameter("pass")
                     .and()
                 .logout()
                     .logoutUrl("/logout")
-                    .logoutSuccessUrl("/")
-                    .permitAll();
+                        .logoutSuccessUrl("/");
+        http.csrf().disable();
     }
 }

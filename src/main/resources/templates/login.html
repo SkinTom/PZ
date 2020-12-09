@@ -25,6 +25,17 @@
 	<!-- main menu -->
 	<th:block th:include="fragments/mainMenu"></th:block>
 
+	<!-- alert about successful register -->
+	<th:block th:include="crud-items/alert"></th:block>
+
+	<!-- alert about login error -->
+	<div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+		Nie znaleziono użytkownika o podanych wartościach! Spróbuj jescze raz.
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+
 	<!-- login form -->
 	<div class="row justify-content-md-center">
 		<div class="col-md-6 register">
@@ -33,7 +44,7 @@
 					<label for="email" class="col-form-label col-md-2">E-mail</label>
 					<div class="col-md-10">
 						<input type="email" id="email" class="form-control" name="username"
-							   placeholder="Adres e-mail" required autofocus>
+							   placeholder="Adres e-mail" autocomplete="off" required autofocus>
 					</div>
 				</div>
 				<div class="form-group row">

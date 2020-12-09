@@ -22,6 +22,7 @@ public class HomeController {
 
     @GetMapping("/login")
     public String login() {
+
         return "login";
     }
 
@@ -30,11 +31,6 @@ public class HomeController {
         List<Item> items = itemRepository.findAll();
         model.addAttribute("items", items);
         return "catalog";
-    }
-
-    @GetMapping("/account")
-    public String account() {
-        return "account";
     }
 
     @GetMapping("/")

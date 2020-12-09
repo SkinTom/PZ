@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <head>
     <meta charset="UTF-8">
 
@@ -11,8 +11,8 @@
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse p-0 pt-3">
             <div class="p-0 m-0">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/finances}" th:classappend="${menuItem == 'finances'} ? 'active' ">
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/finances}" th:classappend="${menuItem == 'finances'} ? 'active' ">
                             <span data-feather="home"></span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                   height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                                   stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
@@ -22,8 +22,8 @@
                             Finanse <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/employees}" th:classappend="${menuItem == 'employees'} ? 'active' ">
+                    <li sec:authorize="hasRole('ADMIN')" class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/employees}" th:classappend="${menuItem == 'employees'} ? 'active' ">
                             <span data-feather="file"></span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                   height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                                   stroke-linecap="round" stroke-linejoin="round" class="feather feather-users">
@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/items}" th:classappend="${menuItem == 'items'} ? 'active' ">
+                        <a class="nav-link" th:href="@{/admin/items}" th:classappend="${menuItem == 'items'} ? 'active' ">
                             <span data-feather="book"></span><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                   height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                                   stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">

@@ -1,5 +1,5 @@
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/items/add}" method="post" th:object="${item}">
+    <form th:action="@{/admin/items/add}" method="post" th:object="${item}" autocomplete="off">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
