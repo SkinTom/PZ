@@ -1,7 +1,12 @@
 <div class="text-center">
     <div class="btn-group text-center btn-group-lg w-100 pb-4" role="group" aria-label="Basic example">
         <a class="btn" th:href="@{/catalog}">Katalog</a>
-        <a class="btn" th:href="@{/login}">Logowanie</a>
+        <a th:unless="${#authorization.expression('hasRole(''ROLE_USER'')')}" class="btn" th:href="@{/login}">
+            <th:block>Logowanie</th:block>
+        </a>
+        <a th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}" class="btn" th:href="@{/logout}">
+            <th:block>Wyloguj się</th:block>
+        </a>
         <a class="btn" th:href="@{/account}">Konto</a>
     </div>
 </div>
